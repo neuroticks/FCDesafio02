@@ -6,6 +6,8 @@
 ```code
 some-local-folder$ git clone git@github.com:neuroticks/FCDesafio02.git
 
+some-local-folder$ cd FCDesafio02
+
 some-local-folder/FCDesafio02$ docker compose up
 
 some-local-folder/FCDesafio02$ curl localhost:9898
