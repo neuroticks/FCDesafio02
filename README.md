@@ -1,3 +1,17 @@
+<h1>Desbloqueio Imediato</h1>
+    <p style="text-align: justify; font-size: 1.2em;">
+        Desejando a imediata visualização do resultado desse trabalho? Fácil!
+    </p>
+
+```code
+some-local-folder$ git clone git@github.com:neuroticks/FCDesafio02.git
+
+some-local-folder/FCDesafio02$ docker compose up
+
+some-local-folder/FCDesafio02$ curl localhost:9898
+```
+
+--------------------------------
 <h1>Macro</h1>
     <p style="text-align: justify; font-size: 1.2em;">
         Criar um servidor web configurado no NGINX.
@@ -9,7 +23,6 @@
     <p style="text-align: justify; font-size: 1.2em;">
         Ao acessar a aplicação, esta deve inserir uma pessoa em um banco de dados e, 
         retornar este nome junto à escrita Full Cycle Rocks! 
-        Os arquivos do MySQL serão posicionados na pasta FCDesafio02/mysql_folder
     </p>
 
 
@@ -27,7 +40,7 @@
 </p>
 <p style="text-align: justify; font-size: 1.2em;">
     Preparando-se para o final, é necessário criar o servidor do MySQL, 
-    instanciando um container apontando para a pasta FCDesafio02/mysql_folder, onde ficarão os arquivos do banco.
+    instanciando um container apontando para a pasta FCDesafio02/mysql_folder/arquivos_db, onde ficarão os arquivos do banco.
 </p>
 <p style="text-align: justify; font-size: 1.2em;">
     Então, para finalizar, atualiza-se a página index.js com as operações de banco.
@@ -91,7 +104,7 @@ $ curl localhost:3000
     Dockerfile para cria a imagem desse NodeApp.
 </p>
 
-[Dockerfile.node](/node_app_folder/Dockerfile.node)
+[Dockerfile do NodeJS](/node_app_folder/Dockerfile.node)
 
 <p style="text-align: justify; font-size: 1.2em;">
 Para evitar copiar arquivos indesejados para dentro da imagem no momento do build, usa-se o arquivo dockerignore.</p>
@@ -113,24 +126,24 @@ $ curl localhost:3000
 
 <h1>NGINX</h1>
 <p style="text-align: justify; font-size: 1.2em;">
-    Para configurar o proxy, pode ser usado diretamente o arquivo defaul.conf, ou da pra usar também um template que é carregado na inicialização do serviço, o que se aproxima mais de um procedimento ideal, ao meu entender, visto que serve-se de um procedimento de substituição automática de variáveis de ambiente. 
+    Para configurar o proxy, pode ser usado diretamente o arquivo defaul.conf, ou dá pra usar também um template que é carregado na inicialização do serviço, o que se aproxima mais de um procedimento ideal, ao meu entender, visto que serve-se de um procedimento de substituição automática de variáveis de ambiente. 
     </br>
     Cria o template de config do nginx e aproveitando cria o arquivo de variáveis de ambiente.
 </p>
 
-[default.conf](/nginx_folder/default.conf.template)
+[template de configuração](/nginx_folder/default.conf.template)
 
 <p style="text-align: justify; font-size: 1.2em;">
     Dockerfile para criar a imagem do servidor web, a partir da imagem padrão do NGINX.
 </p>
 
-[Dockerfile.nginx](/nginx_folder/Dockerfile.nginx)
+[Dockerfile do NGINX](/nginx_folder/Dockerfile.nginx)
 
 <h1>MYSQL</h1>
 <p style="text-align: justify; font-size: 1.2em;">
     Será usada a imagem padrão do dockerhub para a criação do banco MySQL.
     Não havendo criação de imagem, não precisa de dockerfile, mas somente do serviço no <i>docker-compose</i>.
-    Para armazenar os arquivos do banco de dados será usada a pasta <i>mysql_folder</i>>.
+    Para armazenar os arquivos do banco de dados será usada a pasta <i>mysql_folder/arquivos_db</i>.
 </p>
 
 <h1>Juntando Tudo</h1>
@@ -183,7 +196,8 @@ $ curl localhost:9898
     </br>
     Para dar prosseguimento, antes de poder inserir o nome no banco, precisa criar a tabela.
     </br>
-    Para tal será usado um script executado ao inicializar o container mysql.
+    Será usado um script executado ao inicializar o container mysql, utilizando o <u>docker-entrypoint-initdb.d</u> para executar o script de criação.
+    Não sei se esse é o melhor modo de se fazer isso.
 </p>
 
 [criando a tabela na inicialização](/mysql_folder/init-db.sql)
@@ -239,4 +253,7 @@ mysql> desc pessoa;
 
 <p style="text-align: justify; font-size: 1.2em;">
     Verificado que tudo está funcionando até agora, prossegue com a atualização do index.js, para incluir o nome na tabela e mostrar na tela.
+    </br>
+    E pronto! Funcionou!
 </p>
+

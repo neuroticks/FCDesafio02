@@ -41,7 +41,7 @@ app.get('/', async (req, res) => {
          <title>Full Cycle - Desafio 02 - Docker Compose - NGINX/ NodeJS/ MySQL</title>
       </head>
       <body>
-         <h1>${nome ? nome+' ' : 'Full Cycle '} Rocks</h1>
+         <h1>${nome ? nome+', ' : ''} Full Cycle Rocks</h1>
       </body>
       </html>
     `;
