@@ -67,6 +67,8 @@ Aproveita e instala também a lib pro MySQL.</p>
     No VSCode já se visualiza que o projeto foi criado, então procede com a criação do index.js. Veja através dos commits, a evolução do index.js até ser atualizado com as <i>operações de banco</i>.
 </p>
 
+[index.js](../FCDesafio02/node_app_folder/index.js)
+
 <p style="text-align: justify; font-size: 1.2em;">
     Após a criação de um index.js minimo (no VSCode), no terminal da imagem, coloca o index.js em execução.
 </p>
@@ -83,3 +85,15 @@ Aproveita e instala também a lib pro MySQL.</p>
 $ curl localhost:3000
 <h1> Full Cycle Rocks!</h1>
 ```
+
+<h3>NodeApp Image</h3>
+<p style="text-align: justify; font-size: 1.2em;">
+    Dockerfile para cria a imagem desse NodeApp.
+</p>
+
+[Dockerfile.node](../FCDesafio02/node_app_folder/Dockerfile.node)
+
+<p style="text-align: justify; font-size: 1.2em;">
+Para evitar copiar arquivos indesejados para dentro da imagem no momento do build, usa-se o arquivo dockerignore.</p>
+
+[dockerignore](../FCDesafio02/node_app_folder/.dockerignore)

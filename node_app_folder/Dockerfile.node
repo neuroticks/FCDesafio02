@@ -1,0 +1,21 @@
+# pega a imagem node alpine(minimalista) do DockerHub 
+FROM node:alpine AS node_alpine_image
+
+# define o diretório de trabalho dentro da imagem (/usr/src/app é padrão para NodeApps)
+WORKDIR /usr/src/app
+
+# copia o package.json do local para a imagem
+COPY package.json ./
+
+# instala as dependências
+RUN npm install
+
+# copia o index.js
+COPY index.js ./
+
+#expoe a porta 3000 
+EXPOSE 3000
+
+# inicia o app assim que o container é inicializado
+CMD [ "npm", "start" ]
+
