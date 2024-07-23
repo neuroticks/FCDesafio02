@@ -2,7 +2,8 @@ const express = require('express')
 const app = express()
 
 app.get('/', (req, res) => {
-    res.send('<h1> Full Cycle Rocks!</h1>')
+    const head = req.headers
+    res.status(200).send(head)
 })
 
 app.listen(process.env.NODE_APP_SERVER_PORT, () => {

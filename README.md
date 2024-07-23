@@ -153,3 +153,21 @@ $ curl localhost:9898
 $ curl localhost:8787
 <h1> Full Cycle Rocks!</h1>
 ```
+
+<p style="text-align: justify; font-size: 1.2em;">
+    Modifica o index.js para mostrar o header quando passa pelo proxy, para ver a distinção.
+    </br>
+    Agora dá pra ver quando acessa direto a nodeApp, sem passar pelo proxy (porta = 8787)
+    </br>
+    e o resultado com os headers adicionado pelo proxy, quando passa por ele (porta = 9898)
+</p>
+
+
+```code
+$ curl localhost:8787
+{"host":"localhost:8787","user-agent":"curl/7.81.0","accept":"*/*"}
+
+$ curl localhost:9898
+{"x-forwarded-for":"172.17.0.1","host":"localhost","connection":"Upgrade","user-agent":"curl/7.81.0","accept":"*/*"}
+```
+
