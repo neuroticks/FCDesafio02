@@ -1,6 +1,8 @@
-version: "3.8"
+version: "3.9"
 
 networks:
+  node_mysql_net:
+    driver: bridge
   node_nginx_net:
     driver: bridge
 
@@ -16,7 +18,11 @@ services:
         ports:
             - ${NODE_APP_SERVER_PORT}:${NODE_APP_SERVER_PORT}
         networks:
+        - node_mysql_net
         - node_nginx_net
+        depends_on:
+            dck_srv_mysql:
+                condition: service_healthy
 
     dck_srv_nginx:
         tty: true
@@ -31,3 +37,23 @@ services:
         - node_nginx_net
         ports:
             - ${NGINX_SRV_PORT}:${NGINX_SRV_PORT}
+
+    dck_srv_mysql: 
+        tty: true
+        env_file: .env
+        image: mysql:latest
+        command: --innodb-use-native-aio=0
+        container_name: ${MYSQL_SRV_HOST}
+        restart: always
+        volumes: 
+        - ./mysql_folder:/var/lib/mysql
+        environment:
+        - MYSQL_DATABASE=${MYSQL_DATABASE}
+        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        healthcheck:
+            test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD"]
+            interval: 3s
+            timeout: 10s
+            retries: 5
+        networks:
+        - node_mysql_net

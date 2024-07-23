@@ -162,7 +162,6 @@ $ curl localhost:8787
     e o resultado com os headers adicionado pelo proxy, quando passa por ele (porta = 9898)
 </p>
 
-
 ```code
 $ curl localhost:8787
 {"host":"localhost:8787","user-agent":"curl/7.81.0","accept":"*/*"}
@@ -171,3 +170,14 @@ $ curl localhost:9898
 {"x-forwarded-for":"172.17.0.1","host":"localhost","connection":"Upgrade","user-agent":"curl/7.81.0","accept":"*/*"}
 ```
 
+<p style="text-align: justify; font-size: 1.2em;">
+    Verificado o correto funcionamento do NGINX com o nodeApp, acrescenta o serviço do MySQL.
+    </br>
+    Acompanhe os commits para ver a evolução do docker-compose.
+</p>
+
+[docker-compose](/docker-compose.yaml)
+
+<p style="text-align: justify; font-size: 1.2em;">
+    Após subir o docker compose, verificou-se que todos os containers estavam rodando, e os nodeApp respondendo.
+</p>
