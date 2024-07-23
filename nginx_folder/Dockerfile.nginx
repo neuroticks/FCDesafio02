@@ -1,0 +1,9 @@
+# baixa a imagem reduzida(alpine) do nginx do docker hub
+FROM nginx:alpine AS nginx_alpine_image
+
+# posiciona-se no diretório das templates de configuração
+# que são carregadas automaticamente na inicialização do serviço
+WORKDIR /etc/nginx/templates
+
+# copia a template de configurações locais para a imagem
+COPY default.conf.template /etc/nginx/templates/default.conf.template

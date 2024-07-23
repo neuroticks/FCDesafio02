@@ -110,3 +110,20 @@ $ docker run --rm -p3000:3000 my_node_app:v1.0
 $ curl localhost:3000
 <h1> Full Cycle Rocks!</h1>
 ```
+
+<h1>NGINX</h1>
+<p style="text-align: justify; font-size: 1.2em;">
+    Para configurar o proxy, pode ser usado diretamente o arquivo defaul.conf, ou da pra usar também um template que é carregado na inicialização do serviço, o que se aproxima mais de um procedimento ideal, ao meu entender, visto que serve-se de um procedimento de substituição automática de variáveis de ambiente. 
+    </br>
+    Cria o template de config do nginx e aproveitando cria o arquivo de variáveis de ambiente.
+</p>
+
+[default.conf](/nginx_folder/default.conf.template)
+
+<p style="text-align: justify; font-size: 1.2em;">
+    Dockerfile para criar a imagem do servidor web, a partir da imagem padrão do NGINX.
+</p>
+
+[Dockerfile.nginx](/nginx_folder/Dockerfile.nginx)
+
+
