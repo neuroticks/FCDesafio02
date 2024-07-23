@@ -257,5 +257,23 @@ mysql> desc pessoa;
     Verificado que tudo está funcionando até agora, prossegue com a atualização do index.js, para incluir o nome na tabela e mostrar na tela.
     </br>
     E pronto! Funcionou!
+    </br>
+    Para realizar o teste, foi removido o código local e executado todo o processo desde o clone do repositório.
 </p>
+
+```code
+some-local-folder$ docker rm $(docker ps -a -q) -f
+
+some-local-folder$ docker rmi $(docker images -q)
+
+some-local-folder$ docker system prune -f
+
+some-local-folder$ git clone git@github.com:neuroticks/FCDesafio02.git
+
+some-local-folder$ cd FCDesafio02
+
+some-local-folder/FCDesafio02$ docker compose up
+
+some-local-folder/FCDesafio02$ curl localhost:9898
+```
 
