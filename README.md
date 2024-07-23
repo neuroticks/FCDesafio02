@@ -133,4 +133,23 @@ $ curl localhost:3000
     Para armazenar os arquivos do banco de dados será usada a pasta <i>mysql_folder</i>>.
 </p>
 
+<h1>Juntando Tudo</h1>
+<p style="text-align: justify; font-size: 1.2em;">
+    Para verificar que o docker-compose está ok, ativa primeiro o serviço NodeApp com o NGINX.
+    </br>
+    Para testar, basta executar docker-compose up.
+    </br>
+    Acompanhe os commits para ver a evolução do docker-compose.
+    </br>
+    Para verificar o correto funcionamento:
+</p>
 
+```code
+$ docker compose up
+
+$ curl localhost:9898
+<h1> Full Cycle Rocks!</h1>
+
+$ curl localhost:8787
+<h1> Full Cycle Rocks!</h1>
+```
