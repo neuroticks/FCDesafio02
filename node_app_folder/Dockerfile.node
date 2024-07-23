@@ -13,9 +13,6 @@ RUN npm install
 # copia o index.js
 COPY index.js ./
 
-#expoe a porta 3000 
-EXPOSE 3000
-
 # inicia o app assim que o container é inicializado
 CMD [ "npm", "start" ]
 
