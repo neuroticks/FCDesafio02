@@ -97,3 +97,16 @@ $ curl localhost:3000
 Para evitar copiar arquivos indesejados para dentro da imagem no momento do build, usa-se o arquivo dockerignore.</p>
 
 [dockerignore](../FCDesafio02/node_app_folder/.dockerignore)
+
+
+<p style="text-align: justify; font-size: 1.2em;">
+Para verificar o resultado obtido até aqui.</p>
+
+```code
+$ docker build -t my_node_app:v1.0 -f Dockerfile.node .
+
+$ docker run --rm -p3000:3000 my_node_app:v1.0
+
+$ curl localhost:3000
+<h1> Full Cycle Rocks!</h1>
+```
