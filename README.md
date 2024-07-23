@@ -180,4 +180,63 @@ $ curl localhost:9898
 
 <p style="text-align: justify; font-size: 1.2em;">
     Após subir o docker compose, verificou-se que todos os containers estavam rodando, e os nodeApp respondendo.
+    </br>
+    Para dar prosseguimento, antes de poder inserir o nome no banco, precisa criar a tabela.
+    </br>
+    Para tal será usado um script executado ao inicializar o container mysql.
+</p>
+
+[criando a tabela na inicialização](/mysql_folder/init-db.sql)
+
+<p style="text-align: justify; font-size: 1.2em;">
+    Após as devidas atualizações, limpa-se todos os containers e imagens para verificar o correto funcionamento da criação da tabela na inicialização do container do MySQL.
+    </br>
+    Presseguindo com a execução do docker-compose, acessa o container do MySQL para verificação da criação da tabela.
+</p>
+
+```code
+$ docker exec -it mysql_srv_container bash
+
+bash-5.1# mysql -uroot -p
+Enter password: 
+Welcome to the MySQL monitor...
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| node_db            |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql> use node_db;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+
+mysql> show tables;
++-------------------+
+| Tables_in_node_db |
++-------------------+
+| pessoa            |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> desc pessoa;
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int          | NO   | PRI | NULL    | auto_increment |
+| nome  | varchar(255) | YES  |     | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+```
+
+<p style="text-align: justify; font-size: 1.2em;">
+    Verificado que tudo está funcionando até agora, prossegue com a atualização do index.js, para incluir o nome na tabela e mostrar na tela.
 </p>

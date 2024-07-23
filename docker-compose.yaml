@@ -46,7 +46,8 @@ services:
         container_name: ${MYSQL_SRV_HOST}
         restart: always
         volumes: 
-        - ./mysql_folder:/var/lib/mysql
+        - ./mysql_folder/arquivos_db:/var/lib/mysql
+        - ./mysql_folder/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
         environment:
         - MYSQL_DATABASE=${MYSQL_DATABASE}
         - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
