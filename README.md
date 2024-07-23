@@ -53,7 +53,7 @@ $ docker run --rm -it -v $(pwd)/:/usr/src/app -p 3000:3000 node bash
 
 ```code
 $ cd /usr/src/app
-$ npm init -y
+/usr/src/app#  npm init -y
 ```
 <p style="text-align: justify; font-size: 1.2em;">
 Instala-se o express para prover o serviço web.
@@ -61,8 +61,25 @@ Instala-se o express para prover o serviço web.
 Aproveita e instala também a lib pro MySQL.</p>
 
 ```code
-$ npm install express mysql2 --save
+/usr/src/app#  npm install express mysql2 --save
 ```
 <p style="text-align: justify; font-size: 1.2em;">
     No VSCode já se visualiza que o projeto foi criado, então procede com a criação do index.js. Veja através dos commits, a evolução do index.js até ser atualizado com as <i>operações de banco</i>.
 </p>
+
+<p style="text-align: justify; font-size: 1.2em;">
+    Após a criação de um index.js minimo (no VSCode), no terminal da imagem, coloca o index.js em execução.
+</p>
+
+```code
+/usr/src/app#  node index.js
+```
+
+<p style="text-align: justify; font-size: 1.2em;">
+    A partir de outra janela do Terminal, na máquina local, pode-se verificar o funcionamento.
+</p>
+
+```code
+$ curl localhost:3000
+<h1> Full Cycle Rocks!</h1>
+```
