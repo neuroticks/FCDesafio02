@@ -41,3 +41,28 @@
     </br>
     Para que o mapeamento funcione devidamente, o comando, a seguir, deve ser executado dentro da pasta FCDesafio02/node_app_folder.
 </p>
+
+```code
+$ docker run --rm -it -v $(pwd)/:/usr/src/app -p 3000:3000 node bash
+```
+<p style="text-align: justify; font-size: 1.2em;">
+    Ao entrar na pasta de trabalho do container Node, procede-se com a criação do projeto.
+    </br>
+    Ao inicializar o projeto utiliza-se o parâmetro -y para aceitar o padrão em todas as perguntas, a fim de simplesmente criar o projeto.
+</p>
+
+```code
+$ cd /usr/src/app
+$ npm init -y
+```
+<p style="text-align: justify; font-size: 1.2em;">
+Instala-se o express para prover o serviço web.
+</br>
+Aproveita e instala também a lib pro MySQL.</p>
+
+```code
+$ npm install express mysql2 --save
+```
+<p style="text-align: justify; font-size: 1.2em;">
+    No VSCode já se visualiza que o projeto foi criado, então procede com a criação do index.js. Veja através dos commits, a evolução do index.js até ser atualizado com as <i>operações de banco</i>.
+</p>
