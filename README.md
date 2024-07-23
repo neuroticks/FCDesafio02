@@ -126,4 +126,11 @@ $ curl localhost:3000
 
 [Dockerfile.nginx](/nginx_folder/Dockerfile.nginx)
 
+<h1>MYSQL</h1>
+<p style="text-align: justify; font-size: 1.2em;">
+    Será usada a imagem padrão do dockerhub para a criação do banco MySQL.
+    Não havendo criação de imagem, não precisa de dockerfile, mas somente do serviço no <i>docker-compose</i>.
+    Para armazenar os arquivos do banco de dados será usada a pasta <i>mysql_folder</i>>.
+</p>
+
 
