@@ -10,13 +10,10 @@ const db_config = {
 
 async function insert_and_get_nome() {
     try {
-        //console.log(`==== user = ${db_config.user} +++++++++`);
-        //console.log(`==== password = ${db_config.password} +++++++++`);
-
         const connection = await mysql.createConnection(db_config);
         console.log('Conectado ao banco');
 
-        const nome = 'Rodrigo';
+        const nome = 'John Doe';
         const insertQuery = 'INSERT INTO pessoa (nome) VALUES (?)';
         await connection.execute(insertQuery, [nome]);
         console.log(`Nome inserido >> ${nome}`);
