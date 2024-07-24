@@ -24,6 +24,7 @@ services:
         depends_on:
             dck_srv_mysql:
                 condition: service_healthy
+        command: sh -c "npm install && npm start"
 
     dck_srv_nginx:
         tty: true
