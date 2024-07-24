@@ -16,6 +16,8 @@ services:
         container_name: ${NODE_APP_SERVER_HOST}
         ports:
             - ${NODE_APP_SERVER_PORT}:${NODE_APP_SERVER_PORT}
+        volumes: 
+        - ./node_app_folder:/usr/src/app
         networks:
         - node_mysql_net
         - node_nginx_net
