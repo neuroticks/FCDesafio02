@@ -6,39 +6,6 @@ networks:
     driver: bridge
 
 services:
-    dck_srv_node:
-        tty: true
-        env_file: .env
-        image: node_alpine_image
-        build:
-            context: ./node_app_folder
-            dockerfile: ./Dockerfile.node
-        container_name: ${NODE_APP_SERVER_HOST}
-        ports:
-            - ${NODE_APP_SERVER_PORT}:${NODE_APP_SERVER_PORT}
-        volumes: 
-        - ./node_app_folder:/usr/src/app
-        networks:
-        - node_mysql_net
-        - node_nginx_net
-        depends_on:
-            dck_srv_mysql:
-                condition: service_healthy
-        command: sh -c "npm install && npm run dev"
-
-    dck_srv_nginx:
-        tty: true
-        env_file: .env
-        image: nginx_alpine_image
-        restart: always
-        build:
-            context: ./nginx_folder
-            dockerfile: ./Dockerfile.nginx
-        container_name: ${NGINX_SRV_HOST}
-        networks:
-        - node_nginx_net
-        ports:
-            - ${NGINX_SRV_PORT}:${NGINX_SRV_PORT}
 
     dck_srv_mysql: 
         tty: true
@@ -60,3 +27,36 @@ services:
             retries: 5
         networks:
         - node_mysql_net
+
+    dck_srv_node:
+        tty: true
+        env_file: .env
+        container_name: ${NODE_APP_SERVER_HOST}
+        image: node_alpine_image
+        build:
+            context: ./node_app_folder
+            dockerfile: ./Dockerfile.node
+        ports:
+            - ${NODE_APP_SERVER_PORT}:${NODE_APP_SERVER_PORT}
+        volumes: 
+        - ./node_app_folder:/usr/src/app
+        networks:
+        - node_mysql_net
+        - node_nginx_net
+        depends_on:
+            dck_srv_mysql:
+                condition: service_healthy
+        command: sh -c "npm install && npm run dev"
+
+    dck_srv_nginx:
+        tty: true
+        env_file: .env
+        image: nginx:alpine
+        restart: always
+        container_name: ${NGINX_SRV_HOST}
+        ports:
+            - ${NGINX_SRV_PORT}:${NGINX_SRV_PORT}
+        networks:
+        - node_nginx_net
+        volumes:
+        - ./nginx_folder/default.conf.template:/etc/nginx/templates/default.conf.template
