@@ -10,8 +10,8 @@ const db_config = {
 
 async function insert_and_get_nome() {
     try {
-        console.log(`==== user = ${db_config.user} +++++++++`);
-        console.log(`==== password = ${db_config.password} +++++++++`);
+        //console.log(`==== user = ${db_config.user} +++++++++`);
+        //console.log(`==== password = ${db_config.password} +++++++++`);
 
         const connection = await mysql.createConnection(db_config);
         console.log('Conectado ao banco');
@@ -19,7 +19,7 @@ async function insert_and_get_nome() {
         const nome = 'Rodrigo';
         const insertQuery = 'INSERT INTO pessoa (nome) VALUES (?)';
         await connection.execute(insertQuery, [nome]);
-        console.log('Nome inserido');
+        console.log(`Nome inserido >> ${nome}`);
 
         const selectQuery = 'SELECT nome FROM pessoa ORDER BY id DESC LIMIT 1';
         const [rows] = await connection.execute(selectQuery);

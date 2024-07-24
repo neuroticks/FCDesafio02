@@ -5,7 +5,7 @@ FROM node:alpine AS node_alpine_image
 WORKDIR /usr/src/app
 
 # copia o package.json do local para a imagem
-COPY package.json ./
+COPY package*.json ./
 
 # instala as dependências
 RUN npm install
