@@ -1,6 +1,8 @@
 # pega a imagem node alpine(minimalista) do DockerHub 
 FROM node:alpine AS node_alpine_image
 
+USER node
+
 # define o diretório de trabalho dentro da imagem (/usr/src/app é padrão para NodeApps)
 WORKDIR /usr/src/app
 
