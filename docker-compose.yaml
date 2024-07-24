@@ -36,8 +36,6 @@ services:
         build:
             context: ./node_app_folder
             dockerfile: ./Dockerfile.node
-        ports:
-            - ${NODE_APP_SERVER_PORT}:${NODE_APP_SERVER_PORT}
         volumes: 
         - ./node_app_folder:/usr/src/app
         networks:
